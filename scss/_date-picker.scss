@@ -1,0 +1,96 @@
+$date-picker-header-font-size: 20px;
+$date-picker-header-margin: 18px 0 8px;
+
+$date-picker-table-font-size: 12px;
+
+$date-picker-table-row-height: 26px;
+$date-picker-table-row-spacing: 12px;
+
+$date-picker-text-color: #7F7F7F;
+$date-picker-accent-color: #8FDA45;
+$date-picker-disabled-text-color: #CECECE;
+$date-picker-selected-text-color: #FFFFFF;
+
+$date-picker-hover-background-opacity: 0.4;
+
+table.date-picker {
+    text-align: center;
+    color: $date-picker-text-color;
+    width: 100%;
+    font-size: $date-picker-table-font-size;
+    table-layout: fixed;
+
+    caption {
+        margin: $date-picker-header-margin;
+        font-size: $date-picker-header-font-size;
+        font-weight: 100;
+        text-transform: uppercase;
+    }
+
+    thead {
+        font-weight: 500;
+
+        abbr {
+            border-bottom: none;
+        }
+    }
+
+    tr {
+        height: $date-picker-table-row-height + $date-picker-table-row-spacing;
+
+        th,
+        td {
+            line-height: $date-picker-table-row-height;
+        }
+
+        th {
+            font-weight: 500;
+        }
+
+        td {
+            position: relative;
+            cursor: pointer;
+            z-index: 2;
+
+            &.disabled {
+                color: $date-picker-disabled-text-color;
+            }
+
+            &.today,
+            &.selected,
+            &.has-event:not(.disabled),
+            &:hover:not(.disabled) {
+                color: $date-picker-selected-text-color;
+
+                &::before {
+                    position: absolute;
+                    left: 50%;
+                    margin-left: $date-picker-table-row-height * -0.5;
+                    width: $date-picker-table-row-height;
+                    height: $date-picker-table-row-height;
+                    background-color: $date-picker-accent-color;
+                    border-radius: 3px;
+                    content: "";
+                    z-index: -1;
+                }
+            }
+
+            &.has-event:not(:hover):not(.selected):not(.disabled):not(.today) {
+                color: unset;
+
+                &::before {
+                    background-color: unset;
+                    border-radius: 0;
+                    border-bottom: 2px solid $date-picker-accent-color;
+                }
+            }
+
+            &.today:not(.selected),
+            &:hover:not(.selected) {
+                &::before {
+                    opacity: $date-picker-hover-background-opacity;
+                }
+            }
+        }
+    }
+}

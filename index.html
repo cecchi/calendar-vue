@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Calendar</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="build/calendar.css">
+    </head>
+    <body>
+
+        <main class="calendar">
+            <header>
+                <h1 v-if="selected" v-html="headline"></h1>
+                <button v-on="click: addEvent">+</button>
+            </header>
+
+            <table class="date-picker">
+                <caption v-if="selected" v-text="selected.moment.format('MMMM')"></caption>
+
+                <thead>
+                    <tr>
+                        <th>
+                            <abbr title="Sunday">SUN</abbr>
+                        </th>
+                        <th>
+                            <abbr title="Monday">MON</abbr>
+                        </th>
+                        <th>
+                            <abbr title="Tuesday">TUE</abbr>
+                        </th>
+                        <th>
+                            <abbr title="Wednesday">WED</abbr>
+                        </th>
+                        <th>
+                            <abbr title="Thursday">THU</abbr>
+                        </th>
+                        <th>
+                            <abbr title="Friday">FRI</abbr>
+                        </th>
+                        <th>
+                            <abbr title="Saturday">SAT</abbr>
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr v-repeat="weeks">
+                        <td v-repeat="weeks[$index]" v-component="day"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <hr v-show="schedule.length"></hr>
+
+            <ol class="schedule">
+                <li v-repeat="schedule" v-component="event" v-ref="events"></li>
+            </ol>
+        </main>
+
+        <script src="build/calendar.js"></script>
+    </body>
+</html>

@@ -1,0 +1,14 @@
+<td v-class="
+        today: today,
+        selected: selected,
+        disabled: disabled,
+        has-event: events.length
+    "
+    v-on="
+        click: $parent.select(this)
+    "
+>
+    <time datetime="{{ moment.format('YYYY-MM-DD') }}">
+        {{ moment.date() }}
+    </time>
+</td>

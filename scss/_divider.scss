@@ -1,0 +1,9 @@
+$divider-background-color: #8FDA45;
+
+hr {
+    background: $divider-background-color;
+    height: 2px;
+    border: 0;
+    outline: 0;
+    margin: 20px;
+}

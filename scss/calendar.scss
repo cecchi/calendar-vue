@@ -1,0 +1,18 @@
+@import "vendor/normalize";
+@import "fonts";
+@import "layout";
+
+$calendar-background-color: #FFFFFF;
+$calendar-border-radius: 3px;
+
+.calendar {
+    background: $calendar-background-color;
+    border-radius: $calendar-border-radius;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+
+    @import "header";
+    @import "date-picker";
+    @import "divider";
+    @import "schedule";
+}

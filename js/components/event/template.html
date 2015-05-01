@@ -1,0 +1,37 @@
+<li>
+    <time>
+        <span
+            class="hours"
+            v-text="hours * 1 + 1 - 1"
+            v-on="
+                keydown: blur($event) | submit,
+                keydown: validateTime($event),
+                blur: setHours()
+            "
+            v-el="hours"
+            contenteditable
+        ></span>
+        :
+        <span
+            class="minutes"
+            v-text="minutes * 1 + 1 - 1"
+            v-on="
+                keydown: blur($event) | submit,
+                keydown: validateTime($event),
+                blur: setMinutes()
+            "
+            v-el="minutes"
+            contenteditable
+        ></span>
+    </time>
+    <span
+        class="description"
+        v-text="description"
+        v-on="
+            keydown: clearDescriptionPlaceholder(),
+            keydown: blur($event) | submit,
+            input: setDescription($event)
+        "
+        contenteditable
+    ></span>
+</li>
